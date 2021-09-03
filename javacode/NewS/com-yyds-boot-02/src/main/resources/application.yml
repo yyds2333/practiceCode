@@ -1,0 +1,7 @@
+spring:
+  #静态路径配置
+  mvc:
+    static-path-pattern: /res/**
+
+  resources:
+    static-locations: [classpath:/yyds/]

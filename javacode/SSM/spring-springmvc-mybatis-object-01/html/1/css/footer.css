@@ -1,0 +1,16 @@
+
+body,div,p{
+    margin: 0;
+}
+#_footer{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    border:0px solid #000000;
+    text-align: center;
+    font:30px bold;
+    line-height: 80px;
+    background: linear-gradient(100deg ,#00F7DE 0% , #00FF00 50%,#00f7de 100%);
+}

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="student" class="com.zyds.pojo.Student">
+        <property name="name" value="亚迪"/>
+        <property name="bye" ref="bye"/>
+        <property name="number">
+            <array>
+                <value>2</value>
+                <value>3</value>
+                <value>4</value>
+                <value>5</value>
+            </array>
+        </property>
+        <property name="books">
+            <list>
+                <value>红楼梦</value>
+                <value>西游记</value>
+                <value>水浒传</value>
+                <value>大西瓜</value>
+            </list>
+        </property>
+        <property name="code">
+            <map>
+                <entry key="game" value="2333"/>
+                <entry key="LOLR" value="2334"/>
+                <entry key="2333" value="9900"/>
+            </map>
+        </property>
+        <property name="games">
+            <set>
+                <value>LOL</value>
+                <value>WOWS</value>
+                <value>EVE</value>
+            </set>
+        </property>
+        <property name="string">
+            <null></null>
+        </property>
+        <property name="prop">
+            <props>
+                <prop key="user">root</prop>
+                <prop key="pwd">54188</prop>
+            </props>
+        </property>
+    </bean>
+</beans>

@@ -1,0 +1,32 @@
+
+#aa{
+    display: inline-block;
+    position: absolute;
+    right: 20px;
+    bottom: 10px;
+    color: white;
+    font-weight: bold;
+    font-family: 宋体;
+    line-height: 30px;
+    background: #4f8ace;
+    font-size: 20px;
+    text-decoration: none;
+}
+#ab{
+    display: inline-block;
+    position: absolute;
+    right: 100px;
+    bottom: 10px;
+    color: white;
+    font-weight: bold;
+    font-family: 宋体;
+    line-height: 30px;
+    background: #4f8ace;
+    font-size: 20px;
+    text-decoration: none;
+}
+a.hover{
+    color: blue;
+    background: #9fcdff;
+    text-decoration: none;
+}

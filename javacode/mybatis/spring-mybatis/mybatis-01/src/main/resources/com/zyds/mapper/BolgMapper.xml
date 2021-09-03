@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zyds.mapper.BolgMapper">
+    <insert id="addBolg" parameterType="map" >
+        insert into mybatis.bolg
+        values(#{id},#{bolg},#{creationDate},#{views})
+    </insert>
+
+    <select id="getBolgIf" parameterType="map" resultType="bolg">
+        select * from mybatis.bolg where 1=1
+        <if test="bolg!=null">
+            and blog=#{bolg}
+        </if>
+        <if test="views!=null">
+            and views=#{views}
+        </if>
+    </select>
+</mapper>

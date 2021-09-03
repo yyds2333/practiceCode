@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yyds.mapper.UserMapper">
+
+    <select id="getUser" resultType="user">
+        select * from mybatis.user_tbl
+    </select>
+
+    <delete id="deleteUserById" >
+        delete from mybatis.user_tbl where id=#{id}
+    </delete>
+
+</mapper>

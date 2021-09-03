@@ -1,0 +1,65 @@
+
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background: #9fcdff;
+}
+body:after{
+    content: '';
+    display: block;
+    clear: both;
+}
+#inlinediv{
+    display: inline-block;
+    position: relative;
+    left: 50px;
+    font-weight: bold;
+    font-size: 50px;
+    line-height: 100px;
+}
+#div1{
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+#tbl{
+    text-align: center;
+    position: absolute;
+    top: 100px;
+    left: 50px;
+    right:50px;
+    bottom: 100px;
+}
+input{
+    display: inline-block;
+}
+#putOne{
+    position: absolute;
+    right: 80px;
+    top:40px;
+    width: 200px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+}
+#upTo{
+    position: absolute;
+    right: 20px;
+    top:40px;
+    width: 50px;
+    height: 50px;
+}
+table{
+    border: 1px solid #4f8ace;
+    border-radius: 10px;
+    background: #dddddd;
+    color: #0C0C0C;
+    font-weight: bold;
+    height: 150px;
+    width: 1350px;
+    text-align: center;
+}

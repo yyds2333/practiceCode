@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       https://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/mvc
+       https://www.springframework.org/schema/mvc/spring-mvc.xsd
+       http://www.springframework.org/schema/context
+       https://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:annotation-config/>
+
+    <import resource="beans.xml"/>
+    <!--bean就是java对象，由Spring创建和管理-->
+    <bean id="hello" class="com.zyds.pojo.Hello">
+        <property name="world" value="World"></property>
+    </bean>
+
+    <!--这里的bean作用类似于new-->
+    <bean id="MySQLImpl" class="com.zyds.mapper.MySQLMapper" />
+    <bean id="OracleImpl" class="com.zyds.mapper.OracleMapper"/>
+
+    <bean id="setMapper" class="com.zyds.service.MapperService">
+        <property name="mapper" ref="OracleImpl"/>
+    </bean>
+
+
+    <bean id="bye" class="com.zyds.pojo.ByeBye">
+        <constructor-arg name="bye" value="再见"/>
+    </bean>
+<!--    <bean id="..." class="...">-->
+<!--        &lt;!&ndash; collaborators and configuration for this bean go here &ndash;&gt;-->
+<!--    </bean>-->
+
+<!--    <bean id="..." class="...">-->
+<!--        &lt;!&ndash; collaborators and configuration for this bean go here &ndash;&gt;-->
+<!--    </bean>-->
+
+<!--    &lt;!&ndash; more bean definitions go here &ndash;&gt;-->
+
+</beans>

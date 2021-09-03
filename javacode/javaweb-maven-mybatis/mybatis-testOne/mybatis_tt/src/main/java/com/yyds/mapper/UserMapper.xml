@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yyds.mapper.UserMapper">
+
+    <resultMap id="UserMap" type="user">
+<!--        if column value == properties value can not put-->
+<!--        <result column="id" property="id"></result>-->
+        <result column="password" property="userPassword"></result>
+    </resultMap>
+
+    <select id="getUserList" resultMap="UserMap">
+        select * from mybatis.user_tbl
+    </select>
+
+    <insert id="userAdd" parameterType="user">
+        insert into mybatis.user_tbl value (#{id},#{name},#{userPassword})
+    </insert>
+
+    <insert id="userAdd2" parameterType="map">
+        insert into mybatis.user_tbl value (#{id},#{username},#{password})
+    </insert>
+
+    <update id="userModify" parameterType="user">
+        update mybatis.user_tbl set name=#{name} , password=#{userPassword} where id=#{id}
+    </update>
+
+    <delete id="userDelete" parameterType="int">
+        delete from mybatis.user_tbl where id=#{id}
+    </delete>
+
+    <select id="getUserListOne" parameterType="map" resultMap="UserMap">
+        select * from mybatis.user_tbl limit #{startIndex},#{pageSize}
+    </select>
+</mapper>

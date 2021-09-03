@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yyds.mapper.LaboratoryMapper">
+    <!--获取全部实验室信息-->
+    <select id="getAllLaboratory" resultType="Laboratory">
+        select id,code,lab_name,department,today_m,today_a,today_n,tom_m,tom_a,tom_n,principal,capacity
+        from open_laboratory.lab_laboratory
+    </select>
+    <!--根据实验室id或实验室code获取信息 获取实验室信息-->
+    <select id="getLaboratory" resultType="Laboratory">
+        select id,code,lab_name,department,today_m,today_a,today_n,tom_m,tom_a,tom_n,principal,capacity
+        from open_laboratory.lab_laboratory
+    <where>
+        <if test="id>0">
+            id = #{id}
+        </if>
+        <if test="code!=null">
+            code = #{code}
+        </if>
+        <if test="lab_name!=null">
+            lab_name like #{lab_name}
+        </if>
+    </where>
+    </select>
+
+    <!--根据实验室所属院系获取实验室信息-->
+    <select id="getLaboratoryByDepartment" resultType="Laboratory">
+        select id,code,lab_name,department,today_m,today_a,today_n,tom_m,tom_a,tom_n,principal,capacity  from open_laboratory.lab_laboratory where department = #{department}
+    </select>
+
+    <!--获取实验室预约情况-->
+    <select id="getLaboratoryDate" resultType="LabDate">
+        select today_m,today_a,today_n,tom_m,tom_a,tom_n from open_laboratory.lab_laboratory where id = #{id}
+    </select>
+
+    <!--根据预约情况查询-->
+    <select id="getLaboratoryByLabDate" resultType="Laboratory" parameterType="LabDate">
+        select * from open_laboratory.lab_laboratory
+    <where>
+        <if test="today_m!=null">
+            today_m = #{today_m}
+        </if>
+        <if test="today_n!=null">
+            today_n = #{today_n}
+        </if>
+        <if test="today_a!=null">
+            today_a = #{today_a}
+        </if>
+        <if test="tom_m!=null">
+            tom_m = #{tom_m}
+        </if>
+        <if test="tom_n!=null">
+            tom_n = #{tom_n}
+        </if>
+        <if test="tom_a!=null">
+            tom_a = #{tom_a}
+        </if>
+    </where>
+    </select>
+
+    <!--增加实验室-->
+    <insert id="addLabortory" parameterType="Laboratory">
+        insert into open_laboratory.lab_laboratory(id,code,lab_name,department,principal,capacity)
+                values(#{id},#{code},#{lab_name},#{department},#{principal},#{capacity})
+    </insert>
+
+    <!--删除实验室-->
+    <delete id="deleteLabortory" >
+        delete from open_laboratory.lab_laboratory
+            where id = #{id}
+    </delete>
+
+    <!--修改实验室信息-->
+    <update id="updateLabtory" parameterType="Laboratory">
+        update open_laboratory.lab_laboratory
+        set code = #{code},lab_name = #{name},department = #{department},
+            today_m = #{today_m},today_n = #{today_n},today_a = #{today_a},
+            tom_m = #{tom_m},tom_n =#{tom_n},tom_a = #{tom_a},
+            principal = #{principal},capacity = #{capacity}
+        where id = #{id}
+    </update>
+
+    <!--修改预约信息-->
+    <update id="updateLabtoryById" parameterType="LabDate">
+        update open_laboratory.lab_laboratory
+        set <if test="today_m!=0">
+                today_m = #{today_m},
+            </if>
+            <if test="today_n!=0">
+                today_n = #{today_n},
+            </if>
+            <if test="today_a!=0">
+                today_a = #{today_a},
+            </if>
+            <if test="tom_m!=0">
+                tom_m = #{tom_m},
+            </if>
+            <if test="tom_n!=0">
+                tom_n = #{tom_n},
+            </if>
+            <if test="tom_a!=0">
+                tom_a = #{tom_a},
+            </if>
+                id = #{id}
+            where id = #{id}
+    </update>
+
+    <update id="updateLabtoryByIdClear" parameterType="LabDate">
+        update open_laboratory.lab_laboratory
+        set
+        <if test="today_m==0">
+        today_m = #{today_m},
+        </if>
+        <if test="today_n==0">
+            today_n = #{today_n},
+        </if>
+        <if test="today_a==0">
+            today_a = #{today_a},
+        </if>
+        <if test="tom_m==0">
+            tom_m = #{tom_m},
+        </if>
+        <if test="tom_n==0">
+            tom_n = #{tom_n},
+        </if>
+        <if test="tom_a==0">
+            tom_a = #{tom_a},
+        </if>
+        id = #{id}
+        where id = #{id}
+    </update>
+
+    <!---->
+<!--    <update id="updateLabDate">-->
+<!--        update open_laboratory.lab_laboratory-->
+<!--        set     today_m = #{tom_m},-->
+<!--                today_n = #{tom_n},-->
+<!--                today_a = #{tom_a},-->
+<!--                tom_m = 0,-->
+<!--                tom_a = 0,-->
+<!--                tom_n = 0-->
+<!--    </update>-->
+
+    <update id="updateLabDateNull" >
+
+    </update>
+
+    <update id="zeroLabDate" parameterType="LabDate">
+        update open_laboratory.lab_laboratory
+        set today_m = 0,today_a = 0,today_n = 0,tom_m = 0,tom_a = 0,tom_n = 0
+    </update>
+</mapper>

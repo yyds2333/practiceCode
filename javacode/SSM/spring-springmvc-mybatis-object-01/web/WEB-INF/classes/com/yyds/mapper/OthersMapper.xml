@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yyds.mapper.OthersMapper">
+
+    <select id="getDepartment" resultType="Department">
+        select * from open_laboratory.lab_department
+    </select>
+
+    <select id="getAllSex" resultType="Sex">
+        select * from open_laboratory.lab_sex
+    </select>
+
+    <select id="getAllRole" resultType="Role">
+        select * from open_laboratory.lab_role
+    </select>
+
+    <select id="getAllNotice" resultType="Notice">
+        select * from open_laboratory.lab_notice
+    </select>
+
+    <select id="getNoticeById" resultType="Notice">
+        select * from open_laboratory.lab_notice where id= #{id}
+    </select>
+
+    <insert id="addNotice" parameterType="Notice">
+        insert into open_laboratory.lab_notice
+        values (#{id},#{notice})
+    </insert>
+
+    <delete id="deleteNoticeById" >
+        delete from open_laboratory.lab_notice where id=#{id}
+    </delete>
+
+    <update id="updateNotice" parameterType="Notice">
+        update open_laboratory.lab_notice
+        set notice = #{notice}
+        where id=#{id}
+    </update>
+
+    <!--获取时间-->
+    <select id="getDate" resultType="Date">
+        select date form open_laboratory.lab_date
+    </select>
+
+    <update id="updateDate" parameterType="Date">
+        update open_laboratory.lab_date
+        set date = #{date}
+    </update>
+</mapper>
